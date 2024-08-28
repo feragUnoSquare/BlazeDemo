@@ -38,7 +38,7 @@ public class FlightBookingSteps {
         options.addArguments("--disable-gpu");
         options.addArguments("--window.size=1920x1080");
         WebDriverManager.chromedriver()
-                .capabilities(options).remoteAddress("localhost:4444/wd/hub").create();
+                .capabilities(options).remoteAddress("10.0.2.15:4444/wd/hub").create();
         driver.get("https://blazedemo.com/");
         homePage = new HomePage(driver);
     }
