@@ -38,6 +38,7 @@ public class FlightBookingSteps {
         options.addArguments("--remote-allow-origins=*");
         WebDriverManager.chromedriver()
                 .capabilities(options).remoteAddress("http://10.0.2.15:4444").create();
+        driver = new ChromeDriver();
         driver.get("https://blazedemo.com/");
         homePage = new HomePage(driver);
     }
