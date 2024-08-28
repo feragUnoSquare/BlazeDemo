@@ -12,6 +12,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.URL;
+import java.time.Duration;
 
 import static org.testng.AssertJUnit.*;
 
@@ -33,7 +37,7 @@ public class FlightBookingSteps {
         options.addArguments("--disable-gpu");
         options.addArguments("--remote-allow-origins=*");
         WebDriverManager.chromedriver()
-                .capabilities(options).remoteAddress("http://selenium-hub:4444").create();
+                .capabilities(options).remoteAddress("http://10.0.2.15:4444").create();
         driver.get("https://blazedemo.com/");
         homePage = new HomePage(driver);
     }
