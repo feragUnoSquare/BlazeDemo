@@ -12,11 +12,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import static org.testng.AssertJUnit.*;
 
@@ -39,6 +34,7 @@ public class FlightBookingSteps {
         options.addArguments("--remote-allow-origins=*");
         WebDriverManager.chromedriver()
                 .capabilities(options).remoteAddress("http://selenium-hub:4444/wd/hub").setup();
+        driver = new ChromeDriver();
         driver.get("https://blazedemo.com/");
         homePage = new HomePage(driver);
     }
