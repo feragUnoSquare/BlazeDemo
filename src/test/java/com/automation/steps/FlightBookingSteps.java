@@ -12,6 +12,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import static org.testng.AssertJUnit.*;
 
@@ -25,14 +30,15 @@ public class FlightBookingSteps {
 
     @Given("the user is on the BlazeDemo homepage")
     public void theUserIsOnTheBlazeDemoHomepage() {
-        WebDriverManager.chromedriver().setup();
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--window.size=1920x1080");
-        driver = new ChromeDriver(options);
+        WebDriverManager.chromedriver()
+                .capabilities(options).remoteAddress("seleniumhub:4444/wd/hub").create();
         driver.get("https://blazedemo.com/");
         homePage = new HomePage(driver);
     }
