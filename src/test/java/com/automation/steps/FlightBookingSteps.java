@@ -33,8 +33,7 @@ public class FlightBookingSteps {
         options.addArguments("--disable-gpu");
         options.addArguments("--remote-allow-origins=*");
         WebDriverManager.chromedriver()
-                .capabilities(options).remoteAddress("http://selenium-hub:4444/wd/hub").setup();
-        driver = new ChromeDriver();
+                .capabilities(options).remoteAddress("http://selenium-hub:4444/wd/hub").create();
         driver.get("https://blazedemo.com/");
         homePage = new HomePage(driver);
     }
